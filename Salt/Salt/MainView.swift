@@ -21,16 +21,19 @@ struct MainView: View {
                         Text("Ttg")
                     }
                 }
-                GeometryReader {geometry in
-                    Section {
-                        
-                        MyMapView()
-                            .cornerRadius(15)
-                    }.frame(width: geometry.size.width * 0.95, height: geometry.size.height , alignment: .center)
-                        .offset(x: geometry.size.width * 0.025)
-                }.frame(height: 300)
-              
+                Section {
+                    
+                    NavigationLink(destination: MapView()) {
+                        Label("Map", systemImage: "map")
+                    }
+
+               
+                    NavigationLink(destination: CalanderView()) {
+                        Label("Calander", systemImage: "calendar")
+                    }
+                }
             }.navigationTitle("Salt")
+                .navigationViewStyle(StackNavigationViewStyle())
                 .navigationBarItems(leading: LogoutButton())
             //                .background(Image("BG"))
         }

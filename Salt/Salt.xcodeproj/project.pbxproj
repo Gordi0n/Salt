@@ -22,7 +22,21 @@
 		F806274227713F6000B9FB61 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F806274127713F6000B9FB61 /* LoginView.swift */; };
 		F8B2E3D9277144B700782016 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E3D8277144B700782016 /* MainView.swift */; };
 		F8B2E3F827715AED00782016 /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E3F727715AED00782016 /* MyMapView.swift */; };
-		F8B2E3FC27719F2F00782016 /* CalanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E3FB27719F2F00782016 /* CalanderView.swift */; };
+		F8B2E47B2773F7BE00782016 /* EventsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E4642773F7BE00782016 /* EventsRepository.swift */; };
+		F8B2E47F2773F7BE00782016 /* EKCalendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E46B2773F7BE00782016 /* EKCalendar+Extension.swift */; };
+		F8B2E4802773F7BE00782016 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E46C2773F7BE00782016 /* Notifications.swift */; };
+		F8B2E4812773F7BE00782016 /* TimeInterval+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E46D2773F7BE00782016 /* TimeInterval+Extension.swift */; };
+		F8B2E4822773F7BE00782016 /* EKEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E46E2773F7BE00782016 /* EKEvent+Extension.swift */; };
+		F8B2E4832773F7BE00782016 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E4702773F7BE00782016 /* PrimaryButtonStyle.swift */; };
+		F8B2E4842773F7BE00782016 /* SecondaryCaptionTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E4712773F7BE00782016 /* SecondaryCaptionTextStyle.swift */; };
+		F8B2E4852773F7BE00782016 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E4722773F7BE00782016 /* AppDelegate.swift */; };
+		F8B2E4862773F7BE00782016 /* EventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E4742773F7BE00782016 /* EventRow.swift */; };
+		F8B2E4872773F7BE00782016 /* CalendarChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E4752773F7BE00782016 /* CalendarChooser.swift */; };
+		F8B2E4882773F7BE00782016 /* SelectedCalendarsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E4762773F7BE00782016 /* SelectedCalendarsList.swift */; };
+		F8B2E4892773F7BE00782016 /* EventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E4772773F7BE00782016 /* EventEditView.swift */; };
+		F8B2E48C2773F7BE00782016 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E47A2773F7BE00782016 /* SceneDelegate.swift */; };
+		F8B2E48E2773FC8900782016 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E48D2773FC8900782016 /* MapView.swift */; };
+		F8B2E4902773FE7E00782016 /* CalanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E48F2773FE7E00782016 /* CalanderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +74,21 @@
 		F8B2E3D8277144B700782016 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F8B2E3DC277151D400782016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F8B2E3F727715AED00782016 /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
-		F8B2E3FB27719F2F00782016 /* CalanderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalanderView.swift; sourceTree = "<group>"; };
+		F8B2E4642773F7BE00782016 /* EventsRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsRepository.swift; sourceTree = "<group>"; };
+		F8B2E46B2773F7BE00782016 /* EKCalendar+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EKCalendar+Extension.swift"; sourceTree = "<group>"; };
+		F8B2E46C2773F7BE00782016 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		F8B2E46D2773F7BE00782016 /* TimeInterval+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extension.swift"; sourceTree = "<group>"; };
+		F8B2E46E2773F7BE00782016 /* EKEvent+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EKEvent+Extension.swift"; sourceTree = "<group>"; };
+		F8B2E4702773F7BE00782016 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		F8B2E4712773F7BE00782016 /* SecondaryCaptionTextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryCaptionTextStyle.swift; sourceTree = "<group>"; };
+		F8B2E4722773F7BE00782016 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F8B2E4742773F7BE00782016 /* EventRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRow.swift; sourceTree = "<group>"; };
+		F8B2E4752773F7BE00782016 /* CalendarChooser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarChooser.swift; sourceTree = "<group>"; };
+		F8B2E4762773F7BE00782016 /* SelectedCalendarsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedCalendarsList.swift; sourceTree = "<group>"; };
+		F8B2E4772773F7BE00782016 /* EventEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventEditView.swift; sourceTree = "<group>"; };
+		F8B2E47A2773F7BE00782016 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F8B2E48D2773FC8900782016 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		F8B2E48F2773FE7E00782016 /* CalanderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalanderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,10 +192,65 @@
 		F8B2E3DB277147F400782016 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				F8B2E3F727715AED00782016 /* MyMapView.swift */,
-				F8B2E3FB27719F2F00782016 /* CalanderView.swift */,
+				F8B2E48D2773FC8900782016 /* MapView.swift */,
+				F8B2E4912774229D00782016 /* Map Stuff */,
+				F8B2E48F2773FE7E00782016 /* CalanderView.swift */,
+				F8B2E4632773F7BE00782016 /* Calnder Stuff */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		F8B2E4632773F7BE00782016 /* Calnder Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				F8B2E46A2773F7BE00782016 /* Extensions */,
+				F8B2E46F2773F7BE00782016 /* Styles */,
+				F8B2E4732773F7BE00782016 /* Views */,
+			);
+			name = "Calnder Stuff";
+			path = "../../../../../../Downloads/EKEventKit.Example-master/SwiftUI/EventKit.Example/Calnder Stuff";
+			sourceTree = "<group>";
+		};
+		F8B2E46A2773F7BE00782016 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F8B2E46B2773F7BE00782016 /* EKCalendar+Extension.swift */,
+				F8B2E46C2773F7BE00782016 /* Notifications.swift */,
+				F8B2E46D2773F7BE00782016 /* TimeInterval+Extension.swift */,
+				F8B2E46E2773F7BE00782016 /* EKEvent+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F8B2E46F2773F7BE00782016 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				F8B2E4702773F7BE00782016 /* PrimaryButtonStyle.swift */,
+				F8B2E4712773F7BE00782016 /* SecondaryCaptionTextStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		F8B2E4732773F7BE00782016 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F8B2E4642773F7BE00782016 /* EventsRepository.swift */,
+				F8B2E47A2773F7BE00782016 /* SceneDelegate.swift */,
+				F8B2E4722773F7BE00782016 /* AppDelegate.swift */,
+				F8B2E4742773F7BE00782016 /* EventRow.swift */,
+				F8B2E4752773F7BE00782016 /* CalendarChooser.swift */,
+				F8B2E4762773F7BE00782016 /* SelectedCalendarsList.swift */,
+				F8B2E4772773F7BE00782016 /* EventEditView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F8B2E4912774229D00782016 /* Map Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				F8B2E3F727715AED00782016 /* MyMapView.swift */,
+			);
+			path = "Map Stuff";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,15 +390,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8B2E4832773F7BE00782016 /* PrimaryButtonStyle.swift in Sources */,
 				F8B2E3D9277144B700782016 /* MainView.swift in Sources */,
+				F8B2E4902773FE7E00782016 /* CalanderView.swift in Sources */,
 				F806274227713F6000B9FB61 /* LoginView.swift in Sources */,
+				F8B2E4802773F7BE00782016 /* Notifications.swift in Sources */,
+				F8B2E4882773F7BE00782016 /* SelectedCalendarsList.swift in Sources */,
+				F8B2E47B2773F7BE00782016 /* EventsRepository.swift in Sources */,
+				F8B2E48C2773F7BE00782016 /* SceneDelegate.swift in Sources */,
 				F806273C27713EEE00B9FB61 /* LocalOnlyContentView.swift in Sources */,
 				F806274027713F3700B9FB61 /* OpenSyncedRealmView.swift in Sources */,
 				F806270F27713E0300B9FB61 /* ContentView.swift in Sources */,
+				F8B2E4852773F7BE00782016 /* AppDelegate.swift in Sources */,
 				F806270D27713E0300B9FB61 /* SaltApp.swift in Sources */,
+				F8B2E47F2773F7BE00782016 /* EKCalendar+Extension.swift in Sources */,
+				F8B2E4872773F7BE00782016 /* CalendarChooser.swift in Sources */,
+				F8B2E4892773F7BE00782016 /* EventEditView.swift in Sources */,
+				F8B2E48E2773FC8900782016 /* MapView.swift in Sources */,
+				F8B2E4842773F7BE00782016 /* SecondaryCaptionTextStyle.swift in Sources */,
+				F8B2E4822773F7BE00782016 /* EKEvent+Extension.swift in Sources */,
 				F806273E27713F1100B9FB61 /* SyncContentView.swift in Sources */,
 				F8B2E3F827715AED00782016 /* MyMapView.swift in Sources */,
-				F8B2E3FC27719F2F00782016 /* CalanderView.swift in Sources */,
+				F8B2E4812773F7BE00782016 /* TimeInterval+Extension.swift in Sources */,
+				F8B2E4862773F7BE00782016 /* EventRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

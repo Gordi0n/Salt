@@ -29,6 +29,7 @@ struct MyMapView: UIViewRepresentable {
     mapView.setRegion(region, animated: true)
       mapView.showsUserLocation = true
       mapView.showsScale = true
+      
 
     return mapView
   }

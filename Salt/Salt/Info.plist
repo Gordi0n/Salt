@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This will enable linking your calander to salt, allowing use to help you manage events.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>ha</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
