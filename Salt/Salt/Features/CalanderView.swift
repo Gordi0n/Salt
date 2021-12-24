@@ -27,6 +27,10 @@ struct CalanderView: View {
     
     @State private var selectedEvent: EKEvent?
     
+    @EnvironmentObject var locationString: locationD
+    
+    var eventStore: EKEventStore = EKEventStore()
+    
     func showEditFor(_ event: EKEvent) {
         activeSheet = .calendarEdit
         selectedEvent = event
@@ -44,10 +48,19 @@ struct CalanderView: View {
                     }
                     
                     ForEach(eventsRepository.events ?? [], id: \.self) { event in
-                        EventRow(event: event).onTapGesture {
+                        EventRow(event: event).onTapGesture(count: 2) {
+                            let location = event.location?.replacingOccurrences(of: "\\", with: "")
+                            let location2 = location?.replacingOccurrences(of: "\n", with: " ")
+                            locationString.name = location2 ?? ""
+ //                           print(locationString.name)
+                        }
+                        .onTapGesture {
                             self.showEditFor(event)
                         }
+                        
+                        
                     }
+                    
                 }
                 
                 SelectedCalendarsList(selectedCalendars: Array(eventsRepository.selectedCalendars ?? []))
@@ -71,7 +84,7 @@ struct CalanderView: View {
                 
             }
         }.navigationViewStyle(StackNavigationViewStyle())
-            .navigationBarTitle("Calander")
+            .navigationBarTitle("Calander", displayMode: .inline)
             .navigationBarBackButtonHidden(true)
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -105,4 +118,7 @@ struct CalanderView: View {
                 }))
             
     }
+}
+class locationD: ObservableObject {
+    @Published var name = ""
 }

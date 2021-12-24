@@ -10,16 +10,42 @@ import SwiftUI
 struct MapView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @GestureState private var dragOffset = CGSize.zero
+    @State private var directions: [String] = []
+    @State private var showDirections = false
+
+
     
     var body: some View {
         NavigationView {
+            VStack {
         GeometryReader {geometry in
-        MyMapView()
+        MyMapView(directions: $directions)
         
             .cornerRadius(15)
     .frame(width: geometry.size.width * 0.95, height: geometry.size.height , alignment: .center)
     .offset(x: geometry.size.width * 0.025, y: geometry.size.height * -0.35)
 }.frame(height: 300)
+            Button(action: {
+                    self.showDirections.toggle()
+                  }, label: {
+                    Text("Show directions")
+                  })
+                  .disabled(directions.isEmpty)
+                  .padding()
+                }.sheet(isPresented: $showDirections, content: {
+                  VStack(spacing: 0) {
+                    Text("Directions")
+                      .font(.largeTitle)
+                      .bold()
+                      .padding()
+                    
+                    Divider().background(Color.blue)
+                    
+                    List(0..<self.directions.count, id: \.self) { i in
+                      Text(self.directions[i]).padding()
+                    }
+                  }
+                })
         }.navigationViewStyle(StackNavigationViewStyle())
             .navigationBarBackButtonHidden(true)
             .toolbar{
