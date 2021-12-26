@@ -11,7 +11,9 @@ struct MapView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @GestureState private var dragOffset = CGSize.zero
     @State private var directions: [String] = []
+    @ObservedObject var address = locationD()
     @State private var showDirections = false
+    @Binding var address2: String
 
 
     
@@ -19,7 +21,7 @@ struct MapView: View {
         NavigationView {
             VStack {
         GeometryReader {geometry in
-        MyMapView(directions: $directions)
+        MyMapView(directions: $directions, address: $address2)
         
             .cornerRadius(15)
     .frame(width: geometry.size.width * 0.95, height: geometry.size.height , alignment: .center)

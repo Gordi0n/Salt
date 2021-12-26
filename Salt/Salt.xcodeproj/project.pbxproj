@@ -37,6 +37,8 @@
 		F8B2E48C2773F7BE00782016 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E47A2773F7BE00782016 /* SceneDelegate.swift */; };
 		F8B2E48E2773FC8900782016 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E48D2773FC8900782016 /* MapView.swift */; };
 		F8B2E4902773FE7E00782016 /* CalanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E48F2773FE7E00782016 /* CalanderView.swift */; };
+		F8B2E49A2775A75400782016 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E4992775A75400782016 /* AccountView.swift */; };
+		F8B2E49C2776CC3B00782016 /* adtocoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2E49B2776CC3B00782016 /* adtocoor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +91,8 @@
 		F8B2E47A2773F7BE00782016 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F8B2E48D2773FC8900782016 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		F8B2E48F2773FE7E00782016 /* CalanderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalanderView.swift; sourceTree = "<group>"; };
+		F8B2E4992775A75400782016 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		F8B2E49B2776CC3B00782016 /* adtocoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adtocoor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +151,6 @@
 				F806270E27713E0300B9FB61 /* ContentView.swift */,
 				F8B2E3D8277144B700782016 /* MainView.swift */,
 				F8B2E3DB277147F400782016 /* Features */,
-				F806274127713F6000B9FB61 /* LoginView.swift */,
 				F806271027713E0400B9FB61 /* Assets.xcassets */,
 				F806271227713E0400B9FB61 /* Preview Content */,
 			);
@@ -192,6 +195,8 @@
 		F8B2E3DB277147F400782016 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F8B2E4992775A75400782016 /* AccountView.swift */,
+				F8B2E4982775A73900782016 /* Account Stuff */,
 				F8B2E48D2773FC8900782016 /* MapView.swift */,
 				F8B2E4912774229D00782016 /* Map Stuff */,
 				F8B2E48F2773FE7E00782016 /* CalanderView.swift */,
@@ -249,8 +254,17 @@
 			isa = PBXGroup;
 			children = (
 				F8B2E3F727715AED00782016 /* MyMapView.swift */,
+				F8B2E49B2776CC3B00782016 /* adtocoor.swift */,
 			);
 			path = "Map Stuff";
+			sourceTree = "<group>";
+		};
+		F8B2E4982775A73900782016 /* Account Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				F806274127713F6000B9FB61 /* LoginView.swift */,
+			);
+			path = "Account Stuff";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,11 +422,13 @@
 				F8B2E4892773F7BE00782016 /* EventEditView.swift in Sources */,
 				F8B2E48E2773FC8900782016 /* MapView.swift in Sources */,
 				F8B2E4842773F7BE00782016 /* SecondaryCaptionTextStyle.swift in Sources */,
+				F8B2E49A2775A75400782016 /* AccountView.swift in Sources */,
 				F8B2E4822773F7BE00782016 /* EKEvent+Extension.swift in Sources */,
 				F806273E27713F1100B9FB61 /* SyncContentView.swift in Sources */,
 				F8B2E3F827715AED00782016 /* MyMapView.swift in Sources */,
 				F8B2E4812773F7BE00782016 /* TimeInterval+Extension.swift in Sources */,
 				F8B2E4862773F7BE00782016 /* EventRow.swift in Sources */,
+				F8B2E49C2776CC3B00782016 /* adtocoor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

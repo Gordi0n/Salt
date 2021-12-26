@@ -9,6 +9,7 @@
 import SwiftUI
 import EventKit
 import Combine
+import RealmSwift
 
 
 struct CalanderView: View {
@@ -27,8 +28,11 @@ struct CalanderView: View {
     
     @State private var selectedEvent: EKEvent?
     
-    @EnvironmentObject var locationString: locationD
+    @ObservedObject var locationString = locationD()
     
+    @State private var directions: [String] = []
+
+
     var eventStore: EKEventStore = EKEventStore()
     
     func showEditFor(_ event: EKEvent) {
@@ -51,15 +55,21 @@ struct CalanderView: View {
                         EventRow(event: event).onTapGesture(count: 2) {
                             let location = event.location?.replacingOccurrences(of: "\\", with: "")
                             let location2 = location?.replacingOccurrences(of: "\n", with: " ")
-                            locationString.name = location2 ?? ""
- //                           print(locationString.name)
+                            self.locationString.name = location2 ?? ""
+ // This prints the location in a string foramt
+                            print(locationString.name)
                         }
+                        .environmentObject(locationString)
+
                         .onTapGesture {
                             self.showEditFor(event)
                         }
                         
                         
+                        
                     }
+                    Text(locationString.name)
+
                     
                 }
                 
@@ -74,12 +84,16 @@ struct CalanderView: View {
                     Text("Select calendars")
                 }
                 .buttonStyle(PrimaryButtonStyle())
+                NavigationLink(destination: MapView(address2: self.$locationString.name)){
+                    Text("Calculate ETA")
+                }
                 .sheet(isPresented: $showingSheet) {
                     if self.activeSheet == .calendarChooser {
                         CalendarChooser(calendars: self.$eventsRepository.selectedCalendars, eventStore: self.eventsRepository.eventStore)
                     } else {
                         EventEditView(eventStore: self.eventsRepository.eventStore, event: self.selectedEvent)
                     }
+                   
                 }
                 
             }
@@ -118,7 +132,4 @@ struct CalanderView: View {
                 }))
             
     }
-}
-class locationD: ObservableObject {
-    @Published var name = ""
 }

@@ -21,6 +21,9 @@ struct MyMapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
     @Binding var directions: [String]
+    @ObservedObject var lm = LocationHelper()
+    @ObservedObject var locationString = locationD()
+    @Binding var address: String
     
     func makeCoordinator() -> MapViewCoordinator {
         return MapViewCoordinator()
@@ -31,31 +34,59 @@ struct MyMapView: UIViewRepresentable {
         mapView.delegate = context.coordinator
         
         let region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 40.71, longitude: -74),
+            center: CLLocationCoordinate2D(latitude: LocationHelper.currentLocation.latitude, longitude: LocationHelper.currentLocation.longitude),
             span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
         mapView.setRegion(region, animated: true)
         
         // NYC
-        let p1 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 40.71, longitude: -74))
+        print("Received:", self.address)
         
-        // Boston
-        let p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 42.36, longitude: -71.05))
+        let geocoder = CLGeocoder()
+        let group = DispatchGroup()
+        group.enter()
+            geocoder.geocodeAddressString(self.address, completionHandler: { (locations, error) in
+                if error == nil {
+                    if let location = locations?[0] {
+                        print("Running")
+                        self.locationString.lat = locations?[0].location?.coordinate.latitude ?? 53.1
+                        self.locationString.long = locations?[0].location?.coordinate.longitude ?? 42.5
+                        print("Done")
+                        group.leave()
+                        
+                    }
+                } else {
+                    print("Failed")
+                    group.leave()
+                }
+            }
+            )
         
-        let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: p1)
-        request.destination = MKMapItem(placemark: p2)
-        request.transportType = .automobile
+        group.notify(queue: .main) {
+            print(locationString.lat, " ", locationString.long )
         
-        let directions = MKDirections(request: request)
-        directions.calculate { response, error in
-            guard let route = response?.routes.first else { return }
-            mapView.addAnnotations([p1, p2])
-            mapView.addOverlay(route.polyline)
-            mapView.setVisibleMapRect(
-                route.polyline.boundingMapRect,
-                edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20),
-                animated: true)
-            self.directions = route.steps.map { $0.instructions }.filter { !$0.isEmpty }
+
+            let p1 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: LocationHelper.currentLocation.latitude, longitude: LocationHelper.currentLocation.longitude))
+            
+            // Boston
+            let p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: locationString.lat, longitude: locationString.long))
+            
+            let request = MKDirections.Request()
+            request.source = MKMapItem(placemark: p1)
+            request.destination = MKMapItem(placemark: p2)
+            request.transportType = .automobile
+            
+            let directions = MKDirections(request: request)
+            
+            directions.calculate { response, error in
+                guard let route = response?.routes.first else { return }
+                mapView.addAnnotations([p1, p2])
+                mapView.addOverlay(route.polyline)
+                mapView.setVisibleMapRect(
+                    route.polyline.boundingMapRect,
+                    edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20),
+                    animated: true)
+                self.directions = route.steps.map { $0.instructions }.filter { !$0.isEmpty }
+            }
         }
         return mapView
     }
@@ -70,6 +101,9 @@ struct MyMapView: UIViewRepresentable {
             return renderer
         }
     }
+        
+    
+    
 }
 
 import CoreLocation
@@ -86,15 +120,16 @@ class LocationHelper: NSObject, ObservableObject {
         return location.coordinate
     }
     
-    private let locationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
     
-    private override init() {
+    override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
+    
 }
 
 extension LocationHelper: CLLocationManagerDelegate {
@@ -107,4 +142,11 @@ extension LocationHelper: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("Location manager changed the status: \(status)")
     }
+}
+
+class locationD: ObservableObject {
+    @Published var name = "Failed"
+    @Published var coor = CLLocationCoordinate2D()
+    @Published var lat = 0.53
+    @Published var long = 0.55
 }

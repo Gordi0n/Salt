@@ -14,6 +14,7 @@ struct MainView: View {
         UITableViewCell.appearance().backgroundColor = .clear // For tableViewCell
     }
     @StateObject private var locationString = locationD()
+    @State var address: String = ""
     var body: some View {
         NavigationView{
             List {
@@ -24,7 +25,7 @@ struct MainView: View {
                             .fontWeight(.semibold)
                             .foregroundColor(.primary.opacity(0.7))
                     }
-                    NavigationLink(destination: MapView()) {
+                    NavigationLink(destination: MapView(address2: $address)) {
                         Label("Map", systemImage: "map")
                     }
 
@@ -32,7 +33,8 @@ struct MainView: View {
                     NavigationLink(destination: CalanderView().environmentObject(locationD())) {
                         Label("Calander", systemImage: "calendar")
                     }
-                }
+                }                .listRowSeparator(.hidden)
+                    .accentColor(.primary)
                 Section {
                     HStack {
                         Text("Workflows".uppercased())
@@ -40,10 +42,20 @@ struct MainView: View {
                             .fontWeight(.semibold)
                             .foregroundColor(.primary.opacity(0.7))
                     }
-                }
+                    VStack {
+                        Text("Hello")
+                    }
+                }                 .listRowSeparator(.hidden)
+                    .accentColor(.primary)
+                Section {
+                    NavigationLink(destination: AccountView()) {
+                        Label("Account", systemImage: "person.crop.circle")
+                    }
+                }.listRowSeparator(.hidden)
+                    .accentColor(.primary)
             }.navigationTitle("Salt")
                 .navigationViewStyle(StackNavigationViewStyle())
-                .navigationBarItems(leading: LogoutButton())
+               
             //                .background(Image("BG"))
         }
     }
