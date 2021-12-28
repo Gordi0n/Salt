@@ -12,7 +12,7 @@ import RealmSwift
 struct MyAnnotationItem: Identifiable {
     var coordinate: CLLocationCoordinate2D
     var color: Color?
-    var tint: Color { color ?? .red }
+    var tint: Color { color ?? .accentColor }
     let id = UUID()
 }
 
@@ -21,6 +21,7 @@ struct MyMapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
     @Binding var directions: [String]
+    @Binding var eta: [Int]
     @ObservedObject var lm = LocationHelper()
     @ObservedObject var locationString = locationD()
     @Binding var address: String
@@ -44,27 +45,27 @@ struct MyMapView: UIViewRepresentable {
         let geocoder = CLGeocoder()
         let group = DispatchGroup()
         group.enter()
-            geocoder.geocodeAddressString(self.address, completionHandler: { (locations, error) in
-                if error == nil {
-                    if let location = locations?[0] {
-                        print("Running")
-                        self.locationString.lat = locations?[0].location?.coordinate.latitude ?? 53.1
-                        self.locationString.long = locations?[0].location?.coordinate.longitude ?? 42.5
-                        print("Done")
-                        group.leave()
-                        
-                    }
-                } else {
-                    print("Failed")
+        geocoder.geocodeAddressString(self.address, completionHandler: { (locations, error) in
+            if error == nil {
+                if let location = locations?[0] {
+                    print("Running")
+                    self.locationString.lat = locations?[0].location?.coordinate.latitude ?? 53.1
+                    self.locationString.long = locations?[0].location?.coordinate.longitude ?? 42.5
+                    print("Done")
                     group.leave()
+                    
                 }
+            } else {
+                print("Failed")
+                group.leave()
             }
-            )
+        }
+        )
         
         group.notify(queue: .main) {
             print(locationString.lat, " ", locationString.long )
-        
-
+            
+            
             let p1 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: LocationHelper.currentLocation.latitude, longitude: LocationHelper.currentLocation.longitude))
             
             // Boston
@@ -86,9 +87,15 @@ struct MyMapView: UIViewRepresentable {
                     edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20),
                     animated: true)
                 self.directions = route.steps.map { $0.instructions }.filter { !$0.isEmpty }
+                
+    
+                self.eta = [Int(route.expectedTravelTime)]
+                print(eta)
+                
             }
         }
         return mapView
+
     }
     func updateUIView(_ uiView: MKMapView, context: Context) {
     }
@@ -101,7 +108,7 @@ struct MyMapView: UIViewRepresentable {
             return renderer
         }
     }
-        
+    
     
     
 }
@@ -149,4 +156,5 @@ class locationD: ObservableObject {
     @Published var coor = CLLocationCoordinate2D()
     @Published var lat = 0.53
     @Published var long = 0.55
+    @Published var time = 0
 }

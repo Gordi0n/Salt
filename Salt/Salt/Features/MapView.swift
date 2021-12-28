@@ -14,6 +14,7 @@ struct MapView: View {
     @ObservedObject var address = locationD()
     @State private var showDirections = false
     @Binding var address2: String
+    @State private var eta: [Int] = []
 
 
     
@@ -21,7 +22,7 @@ struct MapView: View {
         NavigationView {
             VStack {
         GeometryReader {geometry in
-        MyMapView(directions: $directions, address: $address2)
+            MyMapView(directions: $directions, eta: $eta, address: $address2)
         
             .cornerRadius(15)
     .frame(width: geometry.size.width * 0.95, height: geometry.size.height , alignment: .center)
@@ -30,9 +31,9 @@ struct MapView: View {
             Button(action: {
                     self.showDirections.toggle()
                   }, label: {
-                    Text("Show directions")
+                      Text("Eta:")
                   })
-                  .disabled(directions.isEmpty)
+                  .disabled(eta.isEmpty)
                   .padding()
                 }.sheet(isPresented: $showDirections, content: {
                   VStack(spacing: 0) {
@@ -43,8 +44,8 @@ struct MapView: View {
                     
                     Divider().background(Color.blue)
                     
-                    List(0..<self.directions.count, id: \.self) { i in
-                      Text(self.directions[i]).padding()
+                    List(0..<self.eta.count, id: \.self) { i in
+                      Text(eta)
                     }
                   }
                 })
