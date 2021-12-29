@@ -14,7 +14,7 @@ struct MapView: View {
     @ObservedObject var address = locationD()
     @State private var showDirections = false
     @Binding var address2: String
-    @State private var eta: [Int] = []
+    @State private var eta: [String] = []
 
 
     
@@ -31,9 +31,9 @@ struct MapView: View {
             Button(action: {
                     self.showDirections.toggle()
                   }, label: {
-                      Text("Eta:")
+                    Text("Directions")
                   })
-                  .disabled(eta.isEmpty)
+                  .disabled(directions.isEmpty)
                   .padding()
                 }.sheet(isPresented: $showDirections, content: {
                   VStack(spacing: 0) {
@@ -44,8 +44,8 @@ struct MapView: View {
                     
                     Divider().background(Color.blue)
                     
-                    List(0..<self.eta.count, id: \.self) { i in
-                      Text(eta)
+                    List(0..<self.eta.count, id: \.self) { i in //change eta to directions for directions
+                        Text(self.eta[i]).padding()
                     }
                   }
                 })

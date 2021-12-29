@@ -21,7 +21,7 @@ struct MyMapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
     @Binding var directions: [String]
-    @Binding var eta: [Int]
+    @Binding var eta: [String]
     @ObservedObject var lm = LocationHelper()
     @ObservedObject var locationString = locationD()
     @Binding var address: String
@@ -89,7 +89,7 @@ struct MyMapView: UIViewRepresentable {
                 self.directions = route.steps.map { $0.instructions }.filter { !$0.isEmpty }
                 
     
-                self.eta = [Int(route.expectedTravelTime)]
+                self.eta = ["\(Int(route.expectedTravelTime/60))"]
                 print(eta)
                 
             }
