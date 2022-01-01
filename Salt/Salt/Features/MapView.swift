@@ -31,26 +31,59 @@ struct MapView: View {
             Button(action: {
                     self.showDirections.toggle()
                   }, label: {
-                    Text("Directions")
+                    Text("Details")
                   })
                   .disabled(directions.isEmpty)
                   .padding()
                 }.sheet(isPresented: $showDirections, content: {
                   VStack(spacing: 0) {
-                    Text("Directions")
+                    Text("Details")
                       .font(.largeTitle)
                       .bold()
                       .padding()
                     
                     Divider().background(Color.blue)
                     
-                    List(0..<self.eta.count, id: \.self) { i in //change eta to directions for directions
-                        Text(self.eta[i]).padding()
+                    List(0..<self.eta.count, id: \.self) { i in
+                        
+     
+                            HStack {
+                                Text("ETA: ")
+                                Text(self.eta[i])
+                                Text("mins")
+                            }
+                        //Following code is not working
+                            List(0..<self.directions.count, id: \.self) { o in
+                                Text("Directions")
+                                Text(self.directions[o]).padding()
+                            }
+                         //Remove this } if you want to use the button.
+                            
+                            /*
+                            Button(action: {
+                                self.showDirections.toggle()
+                              }, label: {
+                                Text("Directions")
+                              })
+                              .disabled(directions.isEmpty)
+                              .padding()
+                            }.sheet(isPresented: $showDirections, content: {
+                              VStack(spacing: 0) {
+                                Text("Directions")
+                                  .font(.largeTitle)
+                                  .bold()
+                                  .padding()
+                                
+                                Divider().background(Color.blue)
+                              }
+                            }) */
+                        
                     }
                   }
                 })
         }.navigationViewStyle(StackNavigationViewStyle())
             .navigationBarBackButtonHidden(true)
+        /*
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -60,6 +93,7 @@ struct MapView: View {
                     }
                 }
             }
+         */
             .gesture(DragGesture().updating($dragOffset, body: { (value, state, transaction) in
                     if(value.startLocation.x < 100 && value.translation.width > 100) {
                         presentationMode.wrappedValue.dismiss()
